@@ -1,0 +1,154 @@
+{% extends 'school_app/base.html' %}
+{% block content %}
+
+<div class="featured-slider-container">
+  <div class="featured-slider">
+    <div class="header-slider" style="background-image:url('/static/img/header-image.jpg')"></div>
+    <div class="header-slider" style="background:url('/static/img/header-image.jpg')"></div>
+    <div class="header-slider" style="background:url('/static/img/header-image.jpg')"></div>
+    <div class="header-slider" style="background:url('/static/img/header-image.jpg')"></div>
+  </div>
+  <div class="featured-dots"></div>
+</div>
+
+
+<div class="bocks-container">
+  <div class="each-block" style="background-image:url('/static/img/student-Image.jpg')">
+    <div class="call_to_action" data-aos="fade-up" data-aos-duration="600">
+      <span>ACADEMY</span>
+    </div>
+  </div>
+  <div class="each-block" style="background-image:url('/static/img/student-Image.jpg')">
+    <div class="call_to_action" data-aos="fade-up" data-aos-duration="900">
+      <span>SPORT</span>
+    </div>
+  </div>
+  <div class="each-block" style="background-image:url('/static/img/student-Image.jpg')">
+    <div class="call_to_action" data-aos="fade-up" data-aos-duration="1200">
+      <span>CULTURE</span>
+    </div>
+  </div>
+  <div class="each-block" style="background-image:url('/static/img/student-Image.jpg')">
+    <div class="call_to_action" data-aos="fade-up" data-aos-duration="1600">
+      <span>FACILITIES</span>
+    </div>
+  </div>
+</div>
+
+<div class="our_school_section">
+  <div class="our_school_detail">
+    <div class="details_container">
+      <h2 class="our_school_heading">OUR SCHOOL</h2>
+      <p class="our_school_text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+      </p>
+      <a class="read_more_btn">Read More</a>
+    </div>
+  </div>
+  <div class="our_school_photo" style="background-image:url('/static/img/school-buidling.jpg')"></div>
+</div>
+
+
+<!-- Call to Action Section -->
+<div class="call_to_action_container">
+  <div class="each_call" data-aos="zoom-in-down" data-aos-duration="1000">
+    <img src="/static/img/graduateLogo.png">
+  </div>
+  <div class="each_call" data-aos="zoom-in-down" data-aos-duration="1200">
+    <img src="/static/img/graduateLogo.png">
+  </div>
+  <div class="each_call" data-aos="zoom-in-down" data-aos-duration="1400">
+    <img src="/static/img/graduateLogo.png">
+  </div>
+</div>
+
+<div class="our_focus_container">
+  <h2 class="our_focus_heading">OUR FOCUS</h2>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+    type specimen book
+  </p>
+</div>
+
+<!-- News Section -->
+<div class="news_section">
+  <h1 class="news_title">NEWS & EVENTS</h1>
+  <div align="center">
+    <div class="under_line"></div>
+  </div>
+
+
+  <div class="news-slider">
+    {% for article in newsArticle %}
+    <div>
+      <div class="new_container">
+        <div class="image_container"
+          style="background-image:url(' {{article.news_image.url}} '); background-size: cover;">
+        </div>
+        <div class="news_details">
+          <h2 class="news_title">{{ article.news_title }}</h2>
+          <p class="news_description">
+            {{ article.news_details }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+<br><br>
+
+<script type="text/javascript" src="static/js/slick.min.js"></script>
+
+<script>
+
+  AOS.init({
+    once: false,
+  });
+
+  //alert("Hello");
+
+  $('.featured-slider').slick({
+    slidesToShow: 1,
+    pauseOnHover: true,
+    speed: 1000,
+    autoplay: true,
+    draggable: true,
+    fade: false,
+    scroll: true,
+    dots: true,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: false,
+    appendDots: $('.featured-dots'),
+  });
+
+  $('.news-slider').slick({
+    slidesToShow: 1,
+    pauseOnHover: true,
+    speed: 1000,
+    autoplay: true,
+    draggable: true,
+    fade: true,
+    scroll: false,
+    dots: false,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    prevArrow: $('.news-prev'),
+    nextArrow: $('.news-next'),
+  });
+
+
+</script>
+
+{% include 'school_app/footer.html' %}
+
+{% endblock content %}

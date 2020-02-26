@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% if title %}
+    <title> {{ title }} </title>
+    {% else %}
+    <title> New | School </title>
+    {% endif %}
+
+
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <!-- <link rel="stylesheet" href="/static/css/slick.css"> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="/static/js/jquery3.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script type="text/javascript" src="static/js/main.js"></script>
+
+
+  </head>
+
+  <body>
+    <div class="top_bar">
+      <div class="number_container">
+        <span>info@school.co.za &nbsp; | &nbsp; +27 31 000 0000</span>
+      </div>
+
+      <div class="authentincation_links">
+
+        {% if request.user.is_authenticated %}
+        <div class=" authenticated ">
+          <div class="dropdown">
+            <button class="dropbtn">
+              &nbsp; Hi {{ user.username|title }}
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'profile' %}">Profile</a>
+              <a href=" {% url 'log-out' %}">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        {% else %}
+        <div class="login_regitster_links">
+          <a href="{% url 'sign-up' %}" class="sign_a">Register</a> |
+          <a href="{% url 'sign-in' %}" class="sign_a">SIGN IN</a>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    <div class="menu_bar">
+      <div class="logo_contianer">LOGO</div>
+      <div class="menu_list">
+        <ul>
+          <li><a href="{% url 'Welcome-Home' %}">Home</a></li>
+          <li><a href="{% url 'Welcome-Home' %}">Our School</a></li>
+          <li><a href="{% url 'Welcome-Home' %}">Boarding</a></li>
+          <li><a href="{% url 'Welcome-Home' %}">Apply</a></li>
+          <li><a href="{% url 'Welcome-Home' %}">Admissions</a></li>
+          <li><a href="{% url 'Welcome-Home' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    {% block content %}
+    {% endblock content %}
+  </body>
+
+</html>
